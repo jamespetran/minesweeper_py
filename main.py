@@ -1,10 +1,15 @@
+from ctypes import util
 from tkinter import *
-
+from turtle import left
+import settings
+import utils
+# this is from a tutorial - to learn about OOP and Gui 
+# https://www.youtube.com/watch?v=OqbGRZx4xUc
 
 root = Tk()
 # creates a window
 root.configure(bg="black")
-root.geometry("1440x720")
+root.geometry(f'{settings.WIDTH}x{settings.HEIGHT}')
 # sets window size
 root.title("Minesweeper Game")
 # changes app title
@@ -13,19 +18,31 @@ root.resizable(False, False)
 
 top_frame = Frame(
     root,
-    bg="red", # change later to black
-    width=1440,
-    height=180
+    bg="black", # change later to black
+    width=utils.width_prct(100),
+    height=utils.height_prct(25)
 )
 top_frame.place(x=0, y=0)
 
 left_frame = Frame(
     root,
-    bg="blue", # change later to black
-    width=360,
-    height=540
+    bg="black", # change later to black
+    width=utils.width_prct(25),
+    height=utils.height_prct(75)
 )
+left_frame.place(x=0, y=utils.height_prct(25))
 
+center_frame = Frame(
+    root,
+    bg='black', #change to black
+    width=utils.width_prct(75),
+    height=utils.height_prct(75),
+
+)
+center_frame.place(
+    x=utils.width_prct(25),
+    y=utils.height_prct(25)
+)
 
 root.mainloop()
 # makes it keep running until closed
