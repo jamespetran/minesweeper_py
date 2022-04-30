@@ -1,6 +1,5 @@
-from ctypes import util
 from tkinter import *
-from turtle import left
+from cell import Cell
 import settings
 import utils
 # this is from a tutorial - to learn about OOP and Gui 
@@ -44,5 +43,15 @@ center_frame.place(
     y=utils.height_prct(25)
 )
 
-root.mainloop()
+c1 = Cell()
+c1.create_btn_object(center_frame)
+c1.cell_btn_object.place(
+    x=0,
+    y=0
+)
+
+
+
 # makes it keep running until closed
+root.mainloop()
+
