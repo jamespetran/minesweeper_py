@@ -1,12 +1,17 @@
 from tkinter import Button
+import random
 
 
 class Cell:
+    all = []
     def __init__(self, x, y, is_mine=False):
         self.is_mine = is_mine
         self.cell_btn_object = None
         self.x = x
         self.y = y
+
+        # append the object to the cell.all list
+        Cell.all.append(self)
 
     def create_btn_object(self, location):
         btn = Button(
@@ -27,3 +32,14 @@ class Cell:
         print(event)
         print("I am right clicked!")
 
+    # static method
+    @staticmethod
+    def randomize_mines():
+        picked_cells = random.sample(
+            Cell.all, 9
+        )
+        print(picked_cells)
+
+
+    def __repr__(self):
+        return f"Cell({self.x}, {self.y})"
