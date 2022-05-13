@@ -6,7 +6,7 @@ import utils
 # https://www.youtube.com/watch?v=OqbGRZx4xUc
 
 root = Tk()
-# creates a window
+# creates a window 
 root.configure(bg="black")
 root.geometry(f'{settings.WIDTH}x{settings.HEIGHT}')
 # sets window size
