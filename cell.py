@@ -19,7 +19,7 @@ class Cell:
             location,
             width=12,
             height=4,
-            text=f"{self.x},{self.y}"
+            # text=f"{self.x},{self.y}"
         )
         btn.bind('<Button-1>', self.left_click_actions)
         btn.bind('<Button-3>', self.right_click_actions)
@@ -36,7 +36,8 @@ class Cell:
         for cell in Cell.all:
             if cell.x == x and cell.y ==y:
                 return cell
-
+    
+    # the @property ~DECORATOR~ denotes that this is a read only attribute 
     @property
     def surrounded_cells(self):
         cells = [
@@ -53,11 +54,18 @@ class Cell:
         cells = [cell for cell in cells if cell is not None]
         return cells
 
+    # the @property ~DECORATOR~ denotes that this is a read only attribute 
+    @property
     def surrounded_cells_mines_length(self):
-        pass
+        counter = 0
+        for cell in self.surrounded_cells:
+            if cell.is_mine:
+                counter += 1
+        return counter
 
     def show_cell(self):
-        print(self.surrounded_cells)
+        # print(self.surrounded_cells_mines_length)
+        self.cell_btn_object.configure(text=self.surrounded_cells_mines_length)
 
     def show_mine(self):
         # a logic to interrupt the game and display a message that player lost
