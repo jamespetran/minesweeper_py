@@ -50,6 +50,13 @@ for x in range(settings.GRID_SIZE):
         c.cell_btn_object.grid(
             column=x, row=y
         )
+# call the label from the cell class
+Cell.create_cell_count_label(left_frame)
+Cell.cell_count_label_object.place(
+    x=25,
+    y=0
+)
+
 Cell.randomize_mines()
 
 # makes it keep running until closed

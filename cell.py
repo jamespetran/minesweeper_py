@@ -1,10 +1,11 @@
-from tkinter import Button
+from tkinter import Button, Label
 import random
 import settings
 
 
 class Cell:
     all = []
+    cell_count_label_object = None
     def __init__(self, x, y, is_mine=False):
         self.is_mine = is_mine
         self.cell_btn_object = None
@@ -24,6 +25,21 @@ class Cell:
         btn.bind('<Button-1>', self.left_click_actions)
         btn.bind('<Button-3>', self.right_click_actions)
         self.cell_btn_object = btn
+
+    # this is not an instanced method; we only call it once during each game
+    # therefore: this should be a static method
+    # this method is only used for the class as a whole and not for each instance
+    # don't need to call self in the arguments if it is not an instanced method
+    @staticmethod
+    def create_cell_count_label(location):
+        lbl = Label(
+            location,
+            bg='black',
+            fg='white',
+            text=f"Cells Left: {settings.CELL_COUNT}",
+            font=("arial", 30)
+        )
+        Cell.cell_count_label_object = lbl
         
     def left_click_actions(self, event):
         if self.is_mine:
