@@ -2,11 +2,11 @@ from tkinter import *
 from cell import Cell
 import settings
 import utils
-# this is from a tutorial - to learn about OOP and Gui 
+# this is from a tutorial - to learn about OOP and Gui
 # https://www.youtube.com/watch?v=OqbGRZx4xUc
 
 root = Tk()
-# creates a window 
+# creates a window
 root.configure(bg="black")
 root.geometry(f'{settings.WIDTH}x{settings.HEIGHT}')
 # sets window size
@@ -43,7 +43,7 @@ center_frame.place(
     y=utils.height_prct(25)
 )
 
-for x in range(settings.GRID_SIZE): 
+for x in range(settings.GRID_SIZE):
     for y in range(settings.GRID_SIZE):
         c = Cell(x, y)
         c.create_btn_object(center_frame)
@@ -61,4 +61,3 @@ Cell.randomize_mines()
 
 # makes it keep running until closed
 root.mainloop()
-
